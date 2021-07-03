@@ -156,7 +156,7 @@ Running MetReTrim for paired end reads:
 ./MetReTrim -i ./metretrim_test -o ./metretrim_trim_output -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
 ```
 
-where,  './metretrim_test' is the directory where all the pre-processed fastq files are present,
+where,  './metretrim_test' is the directory where all the fastq files to be processed are present,
         './metretrim_trim_output' is the directory where all the processed fastq files will be stored after trimming,
         'CCTACGGGNGGCWGCAG' is the forward primer sequence used for paired-end sequencing,
 	'GACTACHVGGGTATCTAATCC' is the reverse primer sequence used for paired-end sequencing.
@@ -169,7 +169,7 @@ Running MetReTrim for both single and paired-end reads together :
 ./MetReTrim -i ./metretrim_test -o ./metretrim_trim_output -p ACACACACTAGGCTACGTATGCCA -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
 ```
 
-where,  './metretrim_test' is the directory where all the pre-processed fastq files are present,
+where,  './metretrim_test' is the directory where all the fastq files to be processed are present,
 	'./metretrim_trim_output' is the directory where all the processed fastq files will be stored after trimming,
 	'CCTACGGGNGGCWGCAG' is the forward primer sequence used for paired-end sequencing,
 	'GACTACHVGGGTATCTAATCC' is the reverse primer sequence used for paired-end sequencing.
