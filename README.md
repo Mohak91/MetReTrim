@@ -187,6 +187,62 @@ Running MetReTrim for paired end reads and allowing upto 5 mismatches (default: 
 ./MetReTrim -i ./metretrim_test -o ./metretrim_trim_output -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC -m 5
 ```
 
+##Install and Run via Docker
+
+####Build and run
+
+Assuming docker is installed on your system, download the three files - MetReTrim, requirements.txt and Dockerfile - in the same folder. Run the following command:
+
+```
+sudo docker build -t "MetReTrim" .
+```
+
+The above command builds an image named 'MetReTrim'.
+
+Next, run MetReTrim command as follows:
+
+```
+sudo docker run -v ${PWD}:/usr/src/app -ti --name metretrim_run MetReTrim -i ./metretrim_test -o ./metretrim_output -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
+```
+
+Checking list of docker containers
+
+```
+sudo docker ps -a
+```
+
+Removing docker containers if the STATUS shown is exited,
+
+```
+sudo docker rm metretrim_run
+```
+
+Checking list of images
+
+```
+sudo docker images
+```
+
+Removing metretrim image if desired
+
+```
+sudo docker rmi mohaksharda/metretrim:1.0
+```
+
+####Pull from dockerhub and run
+
+Or directly run the following commands on your terminal (Assuming docker is installed on your system)
+
+```
+sudo docker pull mohaksharda/metretrim:1.0
+```
+
+```
+sudo docker run -v ${PWD}:/usr/src/app -ti --name metretrim_run mohaksharda/metretrim:1.0 -i ./metretrim_test -o ./metretrim_output -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
+```
+
+Note, the docker run command here is executed from the folder with 'metretrim_test' directory present inside it. The output directory 'metretrim_output' is created in the same folder. Change the paths as desired; replace ${PWD} with the desired path as well.
+
 ## Citing MetReTrim
 
 ... to be updated
