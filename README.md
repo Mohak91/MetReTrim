@@ -189,21 +189,28 @@ Running MetReTrim for paired end reads and allowing upto 5 mismatches (default: 
 
 ## Install and Run via Docker
 
-#### Build and run
+Note: It is recommended that the latest version (18 or more) of docker engine is installed on your system. There might be issues with the older versions of docker while running the images. [Read the docker documentation for more details.] (https://docs.docker.com/release-notes/ "Docker docs")
 
-Assuming docker is installed on your system, download the three files - MetReTrim, requirements.txt and Dockerfile - in the same folder. Run the following command:
+#### Pull from dockerhub and run
 
-```
-sudo docker build -t "MetReTrim" .
-```
-
-The above command builds an image named 'MetReTrim'.
-
-Next, run MetReTrim command as follows:
+Directly run the following commands on your terminal
 
 ```
-sudo docker run -v ${PWD}:/usr/src/app -ti --name metretrim_run MetReTrim -i ./metretrim_test -o ./metretrim_output -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
+sudo docker pull mohaksharda/metretrim:1.0
 ```
+
+```
+sudo docker run -d\
+-v ${PWD}:/usr/src/app -ti \
+--name metretrim_run \
+mohaksharda/metretrim:1.0 \
+-i ./metretrim_test \
+-o ./metretrim_output \
+-f CCTACGGGNGGCWGCAG \
+-r GACTACHVGGGTATCTAATCC
+```
+
+Note: The ***docker run*** command here is executed from the folder with 'metretrim_test' directory present inside it. The output directory 'metretrim_output' is created in the same folder. Change the paths as desired; replace **${PWD}** with the desired path as well.
 
 Checking list of docker containers
 
@@ -211,7 +218,7 @@ Checking list of docker containers
 sudo docker ps -a
 ```
 
-Removing docker container if the STATUS shown is exited,
+Removing docker container if the **STATUS** shown is exited,
 
 ```
 sudo docker rm metretrim_run
@@ -223,25 +230,62 @@ Checking list of images
 sudo docker images
 ```
 
-Removing MetReTrim image if desired
+Removing **metretrim** image if desired
 
 ```
-sudo docker rmi MetReTrim
+sudo docker rmi mohaksharda/metretrim:1.0
 ```
 
-#### Pull from dockerhub and run
+#### Build and run
 
-Or directly run the following commands on your terminal (Assuming docker is installed on your system)
+Another way of running MetReTrim is by first building an image on your system, followed by running the container.
 
-```
-sudo docker pull mohaksharda/metretrim:1.0
-```
+Assuming docker is installed on your system, download the three files - **MetReTrim, requirements.txt and Dockerfile** - in the same folder. Run the following command:
 
 ```
-sudo docker run -v ${PWD}:/usr/src/app -ti --name metretrim_run mohaksharda/metretrim:1.0 -i ./metretrim_test -o ./metretrim_output -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
+sudo docker build -t metretrim .
 ```
 
-Note, the docker run command here is executed from the folder with 'metretrim_test' directory present inside it. The output directory 'metretrim_output' is created in the same folder. Change the paths as desired; replace ${PWD} with the desired path as well.
+The above command builds an image named **metretrim**.
+
+Next, run metretrim command as follows:
+
+```
+sudo docker run -d\
+-v ${PWD}:/usr/src/app -ti \
+--name metretrim_run \
+metretrim \
+-i ./metretrim_test \
+-o ./metretrim_output \
+-f CCTACGGGNGGCWGCAG \
+-r GACTACHVGGGTATCTAATCC
+```
+
+Note, the ***docker run*** command here is executed from the folder with 'metretrim_test' directory present inside it. The output directory 'metretrim_output' is created in the same folder. Change the paths as desired; replace ***${PWD}*** with the desired path as well.
+
+Checking list of docker containers
+
+```
+sudo docker ps -a
+```
+
+Removing docker container if the **STATUS** shown is exited,
+
+```
+sudo docker rm metretrim_run
+```
+
+Checking list of images
+
+```
+sudo docker images
+```
+
+Removing **metretrim** image if desired
+
+```
+sudo docker rmi metretrim
+```
 
 ## Citing MetReTrim
 
