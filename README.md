@@ -187,9 +187,9 @@ Running MetReTrim for paired end reads and allowing upto 5 mismatches (default: 
 ./MetReTrim -i ./metretrim_test -o ./metretrim_trim_output -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC -m 5
 ```
 
-##Install and Run via Docker
+## Install and Run via Docker
 
-####Build and run
+#### Build and run
 
 Assuming docker is installed on your system, download the three files - MetReTrim, requirements.txt and Dockerfile - in the same folder. Run the following command:
 
@@ -229,7 +229,7 @@ Removing metretrim image if desired
 sudo docker rmi mohaksharda/metretrim:1.0
 ```
 
-####Pull from dockerhub and run
+#### Pull from dockerhub and run
 
 Or directly run the following commands on your terminal (Assuming docker is installed on your system)
 
