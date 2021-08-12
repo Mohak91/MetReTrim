@@ -211,7 +211,7 @@ Checking list of docker containers
 sudo docker ps -a
 ```
 
-Removing docker containers if the STATUS shown is exited,
+Removing docker container if the STATUS shown is exited,
 
 ```
 sudo docker rm metretrim_run
@@ -223,10 +223,10 @@ Checking list of images
 sudo docker images
 ```
 
-Removing metretrim image if desired
+Removing MetReTrim image if desired
 
 ```
-sudo docker rmi mohaksharda/metretrim:1.0
+sudo docker rmi MetReTrim
 ```
 
 #### Pull from dockerhub and run
