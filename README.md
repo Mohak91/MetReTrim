@@ -251,7 +251,7 @@ The above command builds an image named **metretrim**.
 Next, run metretrim command as follows:
 
 ```
-sudo docker run -d\
+sudo docker run -d \
 -v ${PWD}:/usr/src/app -ti \
 --name metretrim_run \
 metretrim \
