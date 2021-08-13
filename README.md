@@ -200,7 +200,7 @@ sudo docker pull mohaksharda/metretrim:1.0
 ```
 
 ```
-sudo docker run -d\
+sudo docker run -d \
 -v ${PWD}:/usr/src/app -ti \
 --name metretrim_run \
 mohaksharda/metretrim:1.0 \
