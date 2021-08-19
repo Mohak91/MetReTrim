@@ -47,4 +47,4 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 USER metretrim_user
 
-ENTRYPOINT ["python","./MetReTrim"]
+ENTRYPOINT ["python","/usr/src/app/MetReTrim"]
