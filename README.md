@@ -312,26 +312,21 @@ sudo singularity pull docker://mohaksharda/metretrim:1.0
 
 The above command will pull the image from dockerhub and automatically convert it into .sif file (image format required to run with singularity).
 
-The following command can now be used to get inside the container and run the MetReTrim command to create the desired output folder.
+The following command can be used to run MetReTrim using singularity from anywhere.
 
 ```
-singularity shell metretrim_1.0.sif
+singularity run metretrim_1.0.sif -h
 ```
 
-Note: MetReTrim needs to be run as per the following syntax, assuming MetReTrim is either in the global path or is accessible within the working directory:
+The above command prints out the usage for MetReTrim. To run MetReTrim on an input folder containing paired end read files (here named 'metretrim_test'), run the following command:
 
 ```
-python MetReTrim -h
-```
-
-```
-python MetReTrim \
+singularity run metretrim_1.0.sif \
 -i ./metretrim_test \
 -o ./metretrim_output \
 -f CCTACGGGNGGCWGCAG \
 -r GACTACHVGGGTATCTAATCC
 ```
-NOTE: To come out of the shell inside the singularity container, type **exit** and press enter on the command line. This will get you back into the host OS environment.
 
 ## Citing MetReTrim
 
