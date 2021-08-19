@@ -193,14 +193,10 @@ Note: It is recommended that the latest version (18 or more) of docker engine is
 
 #### Pull from dockerhub and run
 
-Directly run the following commands on your terminal
+Directly run the following command on your terminal on the folder containing files to be processed (here metretrim_test) for paired end reads:
 
 ```
-sudo docker pull mohaksharda/metretrim:1.0
-```
-
-```
-sudo docker run -d \
+sudo docker run --rm -d \
 -v ${PWD}:/usr/src/app -ti \
 --name metretrim_run \
 mohaksharda/metretrim:1.0 \
@@ -208,6 +204,21 @@ mohaksharda/metretrim:1.0 \
 -o ./metretrim_output \
 -f CCTACGGGNGGCWGCAG \
 -r GACTACHVGGGTATCTAATCC
+```
+
+Other flag functionalities of MetReTrim remain the same. For example, to also remove the primer sequences along with heterogenous "N" spacers and allowing upto 5 mismatches, following command can be run:
+
+```
+sudo docker run --rm -d \
+-v ${PWD}:/usr/src/app -ti \
+--name metretrim_run \
+mohaksharda/metretrim:1.0 \
+-i ./metretrim_test \
+-o ./metretrim_output \
+-f CCTACGGGNGGCWGCAG \
+-r GACTACHVGGGTATCTAATCC \
+-k unkeep
+-m 5
 ```
 
 Note: The ***docker run*** command here is executed from the folder with 'metretrim_test' directory present inside it. The output directory 'metretrim_output' is created in the same folder. Change the paths as desired; replace **${PWD}** with the desired path as well.
@@ -243,7 +254,9 @@ Another way of running MetReTrim is by first building an image on your system, f
 Assuming docker is installed on your system, download the three files - **MetReTrim, requirements.txt and Dockerfile** - in the same folder. Run the following command:
 
 ```
-sudo docker build -t metretrim .
+sudo docker build \
+--build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+-t mohaksharda/metretrim:1.0 .
 ```
 
 The above command builds an image named **metretrim**.
@@ -251,10 +264,10 @@ The above command builds an image named **metretrim**.
 Next, run metretrim command as follows:
 
 ```
-sudo docker run -d \
+sudo docker run --rm -d \
 -v ${PWD}:/usr/src/app -ti \
 --name metretrim_run \
-metretrim \
+mohaksharda/metretrim:1.0 \
 -i ./metretrim_test \
 -o ./metretrim_output \
 -f CCTACGGGNGGCWGCAG \
