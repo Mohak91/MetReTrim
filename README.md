@@ -300,6 +300,39 @@ Removing **metretrim** image if desired
 sudo docker rmi metretrim
 ```
 
+## Install and Run via Singularity (recommended if MetReTrim needs to be run on remote server)
+
+Make sure singularity is installed. For more details on how to install singularity and other features refer to its documentation: https://sylabs.io/docs/
+
+The image can be downloaded from dockerhub. The following command needs to be run on the system (e.g local system) with root privelages:
+
+```
+sudo singularity pull docker://mohaksharda/metretrim:1.0
+```
+
+The above command will pull the image from dockerhub and automatically convert it into .sif file (image format required to run with singularity).
+
+The following command can now be used to get inside the container and run the MetReTrim command to create the desired output folder.
+
+```
+singularity shell metretrim_1.0.sif
+```
+
+Note: MetReTrim needs to be run as per the following syntax, assuming MetReTrim is either in the global path or is accessible within the working directory:
+
+```
+python MetReTrim -h
+```
+
+```
+python MetReTrim \
+-i ./metretrim_test \
+-o ./metretrim_output \
+-f CCTACGGGNGGCWGCAG \
+-r GACTACHVGGGTATCTAATCC
+```
+NOTE: To come out of the shell inside the singularity container, type **exit** and press enter on the command line. This will get you back into the host OS environment.
+
 ## Citing MetReTrim
 
 ... to be updated
