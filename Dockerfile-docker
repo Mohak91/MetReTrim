@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 #Stage1
 FROM python:3.7-slim AS compile-image
 
