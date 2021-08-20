@@ -197,27 +197,39 @@ Directly run all the commands (1 -5 in the same order, 6th optional) on your ter
 
 1) Pulling the image **mohaksharda/metretrim:1.0** from dockerhub and naming and running the container **metretrim_container**,in detached mode
 
-	```sudo docker run --rm -d -ti --name metretrim_container mohaksharda/metretrim:1.0```
+	```
+	sudo docker run --rm -d -ti --name metretrim_container mohaksharda/metretrim:1.0
+	```
 
 2) Copying the folder containing input files to be pre-processed (here **metretrim_test**) in the default working directory, **/usr/src/app**, inside the container
 
-	```sudo docker cp metretrim_test/ metretrim_container:/usr/src/app```
+	```
+	sudo docker cp metretrim_test/ metretrim_container:/usr/src/app
+	```
 
 3) Running MetReTrim with forward primer and reverse primer. Please note **-o output** needs to be given as it is in the command.
 
-	```sudo docker exec metretrim_container python MetReTrim -i metretrim_test/ -o output/ -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC```
+	```
+	sudo docker exec metretrim_container python MetReTrim -i metretrim_test/ -o output/ -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
+	```
 
 4) Copying the **output** folder from inside the container to a location on your local system. The user can choose an arbitrary name for the output folder, here **metretrim_output**
 
-	```sudo docker cp metretrim_container:/usr/src/app/output metretrim_output```
+	```
+	sudo docker cp metretrim_container:/usr/src/app/output metretrim_output
+	```
 
 5) Stop the container. It automatically gets deleted since --rm option is provided in step 1.
 
-	```sudo docker stop metretrim_container```
+	```
+	sudo docker stop metretrim_container
+	```
 
 6) Optional: Removing **metretrim** image from the system, if desired
 
-	```sudo docker rmi mohaksharda/metretrim:1.0```
+	```
+	sudo docker rmi mohaksharda/metretrim:1.0
+	```
 
 ## Install and Run via Singularity (recommended if MetReTrim needs to be run on remote server)
 
