@@ -193,112 +193,31 @@ Note: It is recommended that the latest version (18 or more) of docker engine is
 
 #### Pull from dockerhub and run
 
-Directly run the following command on your terminal on the folder containing files to be processed (here metretrim_test) for paired end reads:
+Directly run all the commands (1 -5 in the same order, 6th optional) on your terminal on the folder containing files to be processed (here 'metretrim_test') for paired end reads:
 
-```
-sudo docker run --rm -d \
--v ${PWD}:/usr/src/app -ti \
---name metretrim_run \
-mohaksharda/metretrim:1.0 \
--i ./metretrim_test \
--o ./metretrim_output \
--f CCTACGGGNGGCWGCAG \
--r GACTACHVGGGTATCTAATCC
-```
+1) Pulling the image **mohaksharda/metretrim:1.0** from dockerhub and naming and running the container **metretrim_container**,in detached mode
 
-Other flag functionalities of MetReTrim remain the same. For example, to also remove the primer sequences along with heterogenous "N" spacers and allowing upto 5 mismatches, following command can be run:
+	```sudo docker run --rm -d -ti --name metretrim_container mohaksharda/metretrim:1.0```
 
-```
-sudo docker run --rm -d \
--v ${PWD}:/usr/src/app -ti \
---name metretrim_run \
-mohaksharda/metretrim:1.0 \
--i ./metretrim_test \
--o ./metretrim_output \
--f CCTACGGGNGGCWGCAG \
--r GACTACHVGGGTATCTAATCC \
--k unkeep
--m 5
-```
+2) Copying the folder containing input files to be pre-processed (here **metretrim_test**) in the default working directory, **/usr/src/app**, inside the container
 
-Note: The ***docker run*** command here is executed from the folder with 'metretrim_test' directory present inside it. The output directory 'metretrim_output' is created in the same folder. Change the paths as desired; replace **${PWD}** with the desired path as well.
+	```sudo docker cp metretrim_test/ metretrim_container:/usr/src/app```
 
-Checking list of docker containers
+3) Running MetReTrim with forward primer and reverse primer. Please note **-o output** needs to be given as it is in the command.
 
-```
-sudo docker ps -a
-```
+	```sudo docker exec metretrim_container python MetReTrim -i metretrim_test/ -o output/ -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC```
 
-Removing docker container if the **STATUS** shown is exited,
+4) Copying the **output** folder from inside the container to a location on your local system. The user can choose an arbitrary name for the output folder, here **metretrim_output**
 
-```
-sudo docker rm metretrim_run
-```
+	```sudo docker cp metretrim_container:/usr/src/app/output metretrim_output```
 
-Checking list of images
+5) Stop the container. It automatically gets deleted since --rm option is provided in step 1.
 
-```
-sudo docker images
-```
+	```sudo docker stop metretrim_container```
 
-Removing **metretrim** image if desired
+6) Optional: Removing **metretrim** image from the system, if desired
 
-```
-sudo docker rmi mohaksharda/metretrim:1.0
-```
-
-#### Build and run
-
-Another way of running MetReTrim is by first building an image on your system, followed by running the container.
-
-Assuming docker is installed on your system, download the three files - **MetReTrim, requirements.txt and Dockerfile** - in the same folder. Run the following command:
-
-```
-sudo docker build \
---build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
--t mohaksharda/metretrim:1.0 .
-```
-
-The above command builds an image named **metretrim**.
-
-Next, run metretrim command as follows:
-
-```
-sudo docker run --rm -d \
--v ${PWD}:/usr/src/app -ti \
---name metretrim_run \
-mohaksharda/metretrim:1.0 \
--i ./metretrim_test \
--o ./metretrim_output \
--f CCTACGGGNGGCWGCAG \
--r GACTACHVGGGTATCTAATCC
-```
-
-Note, the ***docker run*** command here is executed from the folder with 'metretrim_test' directory present inside it. The output directory 'metretrim_output' is created in the same folder. Change the paths as desired; replace ***${PWD}*** with the desired path as well.
-
-Checking list of docker containers
-
-```
-sudo docker ps -a
-```
-
-Removing docker container if the **STATUS** shown is exited,
-
-```
-sudo docker rm metretrim_run
-```
-
-Checking list of images
-
-```
-sudo docker images
-```
-
-Removing **metretrim** image if desired
-
-```
-sudo docker rmi metretrim
-```
+	```sudo docker rmi mohaksharda/metretrim:1.0```
 
 ## Install and Run via Singularity (recommended if MetReTrim needs to be run on remote server)
 
@@ -307,7 +226,7 @@ Make sure singularity is installed. For more details on how to install singulari
 The image can be downloaded from dockerhub. The following command needs to be run on the system (e.g local system) with root privelages:
 
 ```
-sudo singularity pull docker://mohaksharda/metretrim:1.0
+sudo singularity pull docker://mohaksharda/metretrim:singularity1.0
 ```
 
 The above command will pull the image from dockerhub and automatically convert it into .sif file (image format required to run with singularity).
@@ -315,13 +234,13 @@ The above command will pull the image from dockerhub and automatically convert i
 The following command can be used to run MetReTrim using singularity from anywhere.
 
 ```
-singularity run metretrim_1.0.sif -h
+singularity run metretrim_singularity1.0.sif -h
 ```
 
 The above command prints out the usage for MetReTrim. To run MetReTrim on an input folder containing paired end read files (here named 'metretrim_test'), run the following command:
 
 ```
-singularity run metretrim_1.0.sif \
+singularity run metretrim_singularity1.0.sif \
 -i ./metretrim_test \
 -o ./metretrim_output \
 -f CCTACGGGNGGCWGCAG \
