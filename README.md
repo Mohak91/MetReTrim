@@ -193,7 +193,7 @@ Note: It is recommended that the latest version (18 or more) of docker engine is
 
 #### Pull from dockerhub and run
 
-Checkout the [tutorial video on how to run MetReTrim via Docker](https://drive.google.com/file/d/1hCUtzaUR7PlM5LNxW0BK2L-5KPH57lW1/view?usp=sharing "Run metretrim via docker")
+Checkout the [tutorial video on how to run MetReTrim via Docker](https://drive.google.com/file/d/1FLLvFxyOuwzRIG2L4cI2RojTY4Gg6TAB/view?usp=sharing "Run metretrim via docker")
 
 Run the command(s) on your terminal on the folder containing files to be processed (here **metretrim_test**). Here the example is shown for paired-end sequencing data. You are creating a workspace inside the container with the name **metretrim_files** (name it according to your wish) starting from the root. The folders **metretrim_test** and **metretrim_output** will be stored inside this folder inside the container.
 
