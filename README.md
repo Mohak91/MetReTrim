@@ -218,7 +218,7 @@ Optional: Removing **metretrim** image from the system, if desired
 
 ## Install and Run via Singularity (recommended if MetReTrim needs to be run on remote server)
 
-Make sure singularity is installed. For more details on how to install singularity and other features refer to its documentation: https://sylabs.io/docs/
+Make sure singularity is installed. For more details on how to install singularity and other features refer to its [documentation:](https://sylabs.io/docs/)
 
 
 Checkout the [tutorial video on how to run MetReTrim via Singularity](https://drive.google.com/file/d/1ISqgPCuS8Z0_7-_nsy9wtHLVCEYUsnnH/view?usp=sharing "Run metretrim via singularity")
