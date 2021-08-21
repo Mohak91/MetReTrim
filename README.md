@@ -189,9 +189,11 @@ Running MetReTrim for paired end reads and allowing upto 5 mismatches (default: 
 
 ## Install and Run via Docker
 
-Note: It is recommended that the latest version (18 or more) of docker engine is installed on your system. There might be issues with the older versions of docker while running the images. [Read the docker documentation for more details.] (https://docs.docker.com/release-notes/ "Docker docs")
+Note: It is recommended that the latest version (18 or more) of docker engine is installed on your system. There might be issues with the older versions of docker while running the images. [Read the docker documentation for more details.](https://docs.docker.com/release-notes/ "Docker docs")
 
 #### Pull from dockerhub and run
+
+Checkout the [tutorial video on how to run MetReTrim via Docker](https://drive.google.com/file/d/1hCUtzaUR7PlM5LNxW0BK2L-5KPH57lW1/view?usp=sharing "Run metretrim via docker")
 
 Run the command(s) on your terminal on the folder containing files to be processed (here **metretrim_test**). Here the example is shown for paired-end sequencing data. You are creating a workspace inside the container with the name **metretrim_files** (name it according to your wish) starting from the root. The folders **metretrim_test** and **metretrim_output** will be stored inside this folder inside the container.
 
@@ -217,6 +219,9 @@ Optional: Removing **metretrim** image from the system, if desired
 ## Install and Run via Singularity (recommended if MetReTrim needs to be run on remote server)
 
 Make sure singularity is installed. For more details on how to install singularity and other features refer to its documentation: https://sylabs.io/docs/
+
+
+Checkout the [tutorial video on how to run MetReTrim via Singularity](https://drive.google.com/file/d/1ISqgPCuS8Z0_7-_nsy9wtHLVCEYUsnnH/view?usp=sharing "Run metretrim via singularity")
 
 The image can be downloaded from dockerhub. The following command needs to be run on the system (e.g local system) with root privelages:
 
