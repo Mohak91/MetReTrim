@@ -221,7 +221,7 @@ Make sure singularity is installed. For more details on how to install singulari
 The image can be downloaded from dockerhub. The following command needs to be run on the system (e.g local system) with root privelages:
 
 ```
-sudo singularity pull docker://mohaksharda/metretrim:singularity1.0
+sudo singularity pull docker://mohaksharda/metretrim:1.0
 ```
 
 The above command will pull the image from dockerhub and automatically convert it into .sif file (image format required to run with singularity).
@@ -229,13 +229,13 @@ The above command will pull the image from dockerhub and automatically convert i
 The following command can be used to run MetReTrim using singularity from anywhere.
 
 ```
-singularity run metretrim_singularity1.0.sif -h
+singularity run metretrim_1.0.sif -h
 ```
 
 The above command prints out the usage for MetReTrim. To run MetReTrim on an input folder containing paired end read files (here named 'metretrim_test'), run the following command:
 
 ```
-singularity run metretrim_singularity1.0.sif \
+singularity run metretrim_1.0.sif \
 -i ./metretrim_test \
 -o ./metretrim_output \
 -f CCTACGGGNGGCWGCAG \
