@@ -193,39 +193,22 @@ Note: It is recommended that the latest version (18 or more) of docker engine is
 
 #### Pull from dockerhub and run
 
-Directly run all the commands (1 -5 in the same order, 6th optional) on your terminal on the folder containing files to be processed (here 'metretrim_test') for paired end reads:
+Run the command(s) on your terminal on the folder containing files to be processed (here **metretrim_test**). Here the example is shown for paired-end sequencing data. You are creating a workspace inside the container with the name **metretrim_files** (name it according to your wish) starting from the root. The folders **metretrim_test** and **metretrim_output** will be stored inside this folder inside the container.
 
-1) Pulling the image **mohaksharda/metretrim:1.0** from dockerhub and naming and running the container **metretrim_container**,in detached mode
+```
+sudo docker run --rm -d\
+-v ${PWD}:/metretrim_files -ti \
+--name metretrim_container \
+mohaksharda/metretrim:1.0 \
+-i /metretrim_files/metretrim_test \
+-o /metretrim_files/metretrim_output \
+-f CCTACGGGNGGCWGCAG \
+-r GACTACHVGGGTATCTAATCC \
+-m 5 \
+-k unkeep
+```
 
-	```
-	sudo docker run --rm -d -ti --name metretrim_container mohaksharda/metretrim:1.0
-	```
-
-2) Copying the folder containing input files to be pre-processed (here **metretrim_test**) in the default working directory, **/usr/src/app**, inside the container
-
-	```
-	sudo docker cp metretrim_test/ metretrim_container:/usr/src/app
-	```
-
-3) Running MetReTrim with forward primer and reverse primer. Please note **-o output** needs to be given as it is in the command.
-
-	```
-	sudo docker exec metretrim_container python MetReTrim -i metretrim_test/ -o output/ -f CCTACGGGNGGCWGCAG -r GACTACHVGGGTATCTAATCC
-	```
-
-4) Copying the **output** folder from inside the container to a location on your local system. The user can choose an arbitrary name for the output folder, here **metretrim_output**
-
-	```
-	sudo docker cp metretrim_container:/usr/src/app/output metretrim_output
-	```
-
-5) Stop the container. It automatically gets deleted since --rm option is provided in step 1.
-
-	```
-	sudo docker stop metretrim_container
-	```
-
-6) Optional: Removing **metretrim** image from the system, if desired
+Optional: Removing **metretrim** image from the system, if desired
 
 	```
 	sudo docker rmi mohaksharda/metretrim:1.0
