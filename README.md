@@ -246,6 +246,30 @@ singularity run metretrim_1.0.sif \
 -f CCTACGGGNGGCWGCAG \
 -r GACTACHVGGGTATCTAATCC
 ```
+## MetReTrim v2.0
+
+Functionalities added:
+
+1) Plotting bar plots to show the percentage of reads trimmed and untrimmed. (-v plot)
+2) Also produces a csv file with a table for each sample type and percentage of trimmed and untrimmed reads.
+3) Smith-waterman dynamic programming algorithm to align primer with reads ( to account for mismatches and gaps) (Non-stringent mode default):
+          - match score, mismatch score, gap open penalty, gap extend penalty for primer and read respectively.
+4) minimum read length 
+5) maximum gaps allowed
+6) 5' offset allowed.
+
+All the descriptions can be seen with the *MetReTrim2 -h* command.
+
+Please install the following additional libraries for MetReTrim version 2:
+1) matplotlib
+2) seaborn
+3) pandas
+4) biopython
+5) regex
+
+They can be easily installed using either the pip command or conda package.
+
+Currently, there is no docker or singularity support for MetReTrim2. Please check back for updates.
 
 ## Citing MetReTrim
 
