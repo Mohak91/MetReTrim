@@ -246,7 +246,7 @@ singularity run metretrim_1.0.sif \
 -f CCTACGGGNGGCWGCAG \
 -r GACTACHVGGGTATCTAATCC
 ```
-## MetReTrim v2.0
+## MetReTrim v2.0 (for advanced users, beta phase)
 
 Functionalities added:
 
@@ -270,6 +270,8 @@ Please install the following additional libraries for MetReTrim version 2:
 They can be easily installed using either the pip command or conda package.
 
 Currently, there is no docker or singularity support for MetReTrim2. Please check back for updates.
+
+Please write back to us in case of any queries and/or feedbacks.
 
 ## Citing MetReTrim
 
