@@ -1,7 +1,7 @@
 # MetReTrim
 
 **Mohak Sharda**   
-**v1.0**
+**v1.0 (recommended)**
 
 ***mohaks@ncbs.res.in***  
 ***sharda.mohak@gmail.com***
