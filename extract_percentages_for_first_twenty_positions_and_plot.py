@@ -1,5 +1,5 @@
 INPUT_FOLDER="/home/ubuntu/MetReTrim/data/fastq_files"
-OUTPUT_FOLDER="/home_ubuntu/MetReTrim/results/barplots"
+OUTPUT_FOLDER="/home/ubuntu/MetReTrim/results/barplots"
 
 import pandas as pd
 import seaborn as sns
