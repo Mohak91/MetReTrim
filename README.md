@@ -275,4 +275,4 @@ Please write back to us in case of any queries and/or feedbacks.
 
 ## Citing MetReTrim
 
-... to be updated
+Naik, T., Sharda, M., C P, L. et al. High-quality single amplicon sequencing method for illumina MiSeq platform using pool of ‘N’ (0–10) spacer-linked target specific primers without PhiX spike-in. BMC Genomics 24, 141 (2023). https://doi.org/10.1186/s12864-023-09233-4
